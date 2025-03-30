@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スキルタイマー</title>
+    <style>
+        body { text-align: center; font-family: 'Comic Sans MS', sans-serif; }
+        h1 {
+            color: #ff69b4; /* ピンク色 */
+            font-size: 3rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(255, 105, 180, 0.5); /* 影を追加 */
+            margin-bottom: 20px;
+            animation: bounce 1s infinite alternate; /* バウンスアニメーション */
+        }
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+        .timers-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .timer-wrapper {
+            text-align: center;
+        }
+        .timer-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 20px auto;
+        }
+        svg {
+            transform: rotate(-90deg);
+        }
+        circle {
+            transition: stroke-dashoffset 1s linear;
+        }
+        .timer-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+        }
+        button {
+            font-size: 1.2rem;
+            margin: 5px;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        button.start {
+            background-color: #ff4500;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(255, 69, 0, 0.3);
+        }
+        button.start:hover {
+            background-color: #ff5722;
+            box-shadow: 0 6px 12px rgba(255, 69, 0, 0.4);
+        }
+        button.reset {
+            background-color: #ddd;
+            color: #333;
+        }
+        input.minutes, input.seconds {
+            font-size: 1.5rem;
+            width: 60px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>スキルタイマー</h1>
+    <div class="timers-container">
+        <div class="timer-wrapper" data-index="0">
+            <input type="number" class="minutes" placeholder="分" min="0" value="1"> :
+            <input type="number" class="seconds" placeholder="秒" min="0" max="59" value="0">
+            <div class="timer-container">
+                <svg width="150" height="150" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" stroke="#ddd" stroke-width="5" fill="none" />
+                    <circle class="progress" cx="50" cy="50" r="45" stroke="#ff4500" stroke-width="5" fill="none" stroke-dasharray="283" stroke-dashoffset="283" />
+                </svg>
+                <div class="timer-text">01:00</div>
+            </div>
+            <button class="start" onclick="startTimer(this.parentElement)">開始</button>
+            <button class="reset" onclick="resetTimer(this.parentElement)">リセット</button>
+        </div>
+        <div class="timer-wrapper" data-index="1">
+            <input type="number" class="minutes" placeholder="分" min="0" value="1"> :
+            <input type="number" class="seconds" placeholder="秒" min="0" max="59" value="0">
+            <div class="timer-container">
+                <svg width="150" height="150" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" stroke="#ddd" stroke-width="5" fill="none" />
+                    <circle class="progress" cx="50" cy="50" r="45" stroke="#ff4500" stroke-width="5" fill="none" stroke-dasharray="283" stroke-dashoffset="283" />
+                </svg>
+                <div class="timer-text">01:00</div>
+            </div>
+            <button class="start" onclick="startTimer(this.parentElement)">開始</button>
+            <button class="reset" onclick="resetTimer(this.parentElement)">リセット</button>
+        </div>
+        <div class="timer-wrapper" data-index="2">
+            <input type="number" class="minutes" placeholder="分" min="0" value="1"> :
+            <input type="number" class="seconds" placeholder="秒" min="0" max="59" value="0">
+            <div class="timer-container">
+                <svg width="150" height="150" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" stroke="#ddd" stroke-width="5" fill="none" />
+                    <circle class="progress" cx="50" cy="50" r="45" stroke="#ff4500" stroke-width="5" fill="none" stroke-dasharray="283" stroke-dashoffset="283" />
+                </svg>
+                <div class="timer-text">01:00</div>
+            </div>
+            <button class="start" onclick="startTimer(this.parentElement)">開始</button>
+            <button class="reset" onclick="resetTimer(this.parentElement)">リセット</button>
+        </div>
+        <div class="timer-wrapper" data-index="3">
+            <input type="number" class="minutes" placeholder="分" min="0" value="1"> :
+            <input type="number" class="seconds" placeholder="秒" min="0" max="59" value="0">
+            <div class="timer-container">
+                <svg width="150" height="150" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" stroke="#ddd" stroke-width="5" fill="none" />
+                    <circle class="progress" cx="50" cy="50" r="45" stroke="#ff4500" stroke-width="5" fill="none" stroke-dasharray="283" stroke-dashoffset="283" />
+                </svg>
+                <div class="timer-text">01:00</div>
+            </div>
+            <button class="start" onclick="startTimer(this.parentElement)">開始</button>
+            <button class="reset" onclick="resetTimer(this.parentElement)">リセット</button>
+        </div>
+        <div class="timer-wrapper" data-index="4">
+            <input type="number" class="minutes" placeholder="分" min="0" value="1"> :
+            <input type="number" class="seconds" placeholder="秒" min="0" max="59" value="0">
+            <div class="timer-container">
+                <svg width="150" height="150" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" stroke="#ddd" stroke-width="5" fill="none" />
+                    <circle class="progress" cx="50" cy="50" r="45" stroke="#ff4500" stroke-width="5" fill="none" stroke-dasharray="283" stroke-dashoffset="283" />
+                </svg>
+                <div class="timer-text">01:00</div>
+            </div>
+            <button class="start" onclick="startTimer(this.parentElement)">開始</button>
+            <button class="reset" onclick="resetTimer(this.parentElement)">リセット</button>
+        </div>
+    </div>
+    <script>
+        function startTimer(timerWrapper) {
+            let minutes = parseInt(timerWrapper.querySelector('.minutes').value) || 0;
+            let seconds = parseInt(timerWrapper.querySelector('.seconds').value) || 0;
+            let totalTime = minutes * 60 + seconds;
+            let remainingTime = totalTime;
+            let progressCircle = timerWrapper.querySelector('.progress');
+            let timerText = timerWrapper.querySelector('.timer-text');
+            let timerInterval;
+
+            function updateDisplay() {
+                let min = Math.floor(remainingTime / 60);
+                let sec = remainingTime % 60;
+                timerText.textContent = `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+                let progress = (remainingTime / totalTime) * 283;
+                progressCircle.style.strokeDashoffset = progress;
+            }
+
+            function countdown() {
+                if (remainingTime > 0) {
+                    remainingTime--;
+                    updateDisplay();
+                } else {
+                    remainingTime = totalTime; // タイマーをリセットして再スタート
+                    updateDisplay();
+                }
+            }
+
+            updateDisplay();
+            timerInterval = setInterval(countdown, 1000);
+            timerWrapper.dataset.interval = timerInterval;
+        }
+
+        function resetTimer(timerWrapper) {
+            clearInterval(timerWrapper.dataset.interval);
+            let minutes = parseInt(timerWrapper.querySelector('.minutes').value) || 0;
+            let seconds = parseInt(timerWrapper.querySelector('.seconds').value) || 0;
+            let totalTime = minutes * 60 + seconds;
+            let progressCircle = timerWrapper.querySelector('.progress');
+            let timerText = timerWrapper.querySelector('.timer-text');
+            
+            // リセット後に初期状態に戻す
+            progressCircle.style.transition = "none"; // 進行状況のアニメーションを無効化
+            progressCircle.style.strokeDashoffset = 283; // 初期位置に戻す
+            timerText.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            
+            setTimeout(() => {
+                progressCircle.style.transition = "stroke-dashoffset 1s linear"; // アニメーションを再開
+            }, 50); // 少し遅延してアニメーションを再開
+        }
+    </script>
+</body>
+</html>
